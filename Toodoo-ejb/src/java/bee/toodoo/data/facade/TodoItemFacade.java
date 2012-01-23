@@ -26,5 +26,8 @@ public class TodoItemFacade extends AbstractFacade<TodoItem> {
 	public TodoItemFacade() {
 		super(TodoItem.class);
 	}
-	
+
+	public void createNew(TodoItem todoItem) {
+		em.persist(todoItem);
+	}
 }

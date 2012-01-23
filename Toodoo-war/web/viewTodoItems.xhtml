@@ -4,7 +4,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:p="http://primefaces.prime.com.tr/ui"
 	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <body>
 
@@ -18,17 +19,17 @@
 							<h:outputText value="#{todoItem.idTodoItems}" />
 						</p:column>
 
-						<p:column>
+						<p:column sortBy="#{todoItem.name}">
 							<f:facet name="header">Name</f:facet>
 							<h:outputText value="#{todoItem.name}" />
 						</p:column>
 
-						<p:column>
+						<p:column sortBy="#{todoItem.description}">
 							<f:facet name="header">Description</f:facet>
 							<h:outputText value="#{todoItem.description}" />
 						</p:column>
 
-						<p:column>
+						<p:column sortBy="#{todoItem.status}">
 							<f:facet name="header">Status</f:facet>
 							<h:outputText value="#{todoItem.status}" />
 						</p:column>
@@ -37,6 +38,7 @@
 							<f:facet name="header">Actions</f:facet>
 
 						</p:column>
+
 					</p:dataTable>
 				</h:form>
             </ui:define>

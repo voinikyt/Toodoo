@@ -45,6 +45,7 @@ public class TodoItem implements Serializable {
 	private boolean status;
 
 	public TodoItem() {
+		this.status = false;
 	}
 
 	public TodoItem(Integer idTodoItems) {
@@ -113,5 +114,5 @@ public class TodoItem implements Serializable {
 	public String toString() {
 		return "bee.toodoo.data.entity.TodoItem[ idTodoItems=" + idTodoItems + " ]";
 	}
-	
+
 }
