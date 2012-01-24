@@ -27,10 +27,8 @@ public class TodoItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idTodoItems", nullable = false)
-	private Integer idTodoItems;
+    @Column(name = "idTodoItems", nullable = true)
+	private Integer idTodoItems = null;
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -42,10 +40,9 @@ public class TodoItem implements Serializable {
 	@Basic(optional = false)
     @NotNull
     @Column(name = "status", nullable = false)
-	private boolean status;
+	private boolean status = false;
 
 	public TodoItem() {
-		this.status = false;
 	}
 
 	public TodoItem(Integer idTodoItems) {

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:p="http://primefaces.prime.com.tr/ui"
+	  xmlns:p="http://primefaces.org/ui"
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:c="http://java.sun.com/jsp/jstl/core">
@@ -12,35 +12,48 @@
         <ui:composition template="./WEB-INF/templates/core/h5bp.xhtml">
 
             <ui:define name="h5bp-main">
-				<h:form>
-					<p:dataTable var="todoItem" value="#{todoItemController.viewAll()}" paginator="true" >
-						<p:column sortBy="#{todoItem.idTodoItems}">
-							<f:facet name="header">ID</f:facet>
-							<h:outputText value="#{todoItem.idTodoItems}" />
-						</p:column>
+				<f:view>
+					<h:form>
+						<p:panel id="panel" header="Create New Todo Item">
+							<p:messages />
+							<h:panelGrid columns="2">
+								<h:outputLabel for="name" value="Name: *" />
+								<p:inputText id="name" value="#{todoItemController.todoItem.name}" required="true"/>
 
-						<p:column sortBy="#{todoItem.name}">
-							<f:facet name="header">Name</f:facet>
-							<h:outputText value="#{todoItem.name}" />
-						</p:column>
+								<h:outputLabel for="description" value="Description: *"  />
+								<p:inputText id="description" value="#{todoItemController.todoItem.description}" required="true"/>
+							</h:panelGrid>
+							<p:commandButton type="submit" actionListener="#{todoItemController.createNew}" value="Create" />
 
-						<p:column sortBy="#{todoItem.description}">
-							<f:facet name="header">Description</f:facet>
-							<h:outputText value="#{todoItem.description}" />
-						</p:column>
+						</p:panel>
+					</h:form>
+				</f:view>
+				<f:view>
+					<h:form>
+						<p:dataTable var="todoItem" value="#{todoItemController.viewAll()}" paginator="true" >
+							<p:column sortBy="#{todoItem.name}">
+								<f:facet name="header">Name</f:facet>
+								<h:outputText value="#{todoItem.name}" />
+							</p:column>
 
-						<p:column sortBy="#{todoItem.status}">
-							<f:facet name="header">Status</f:facet>
-							<h:outputText value="#{todoItem.status}" />
-						</p:column>
+							<p:column sortBy="#{todoItem.description}">
+								<f:facet name="header">Description</f:facet>
+								<h:outputText value="#{todoItem.description}" />
+							</p:column>
 
-						<p:column>
-							<f:facet name="header">Actions</f:facet>
+							<p:column sortBy="#{todoItem.status}">
+								<f:facet name="header">Status</f:facet>
+								<h:outputText value="#{todoItem.status}" />
+							</p:column>
 
-						</p:column>
+							<p:column>
+								<f:facet name="header">Actions</f:facet>
 
-					</p:dataTable>
-				</h:form>
+							</p:column>
+
+						</p:dataTable>
+					</h:form>
+				</f:view>
             </ui:define>
 
         </ui:composition>
